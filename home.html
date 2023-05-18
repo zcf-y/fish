@@ -1,1 +1,33 @@
-看到没有，，
+<!DOCTYPE html>
+<html>
+<head>
+	<title>看到了吗</title>
+</head>
+<body>
+	<h1>Welcome to my page!</h1>
+	<p>This is my first webpage.</p>
+	<input type="text" id="myInput">
+	<script>
+		// Add event listener to input
+		document.getElementById("myInput").addEventListener("input", function() {
+			// Get the value of the input element
+			var inputValue = document.getElementById("myInput").value;
+			if (isNaN(inputValue)) {
+				console.log("输入的不是数字");
+				document.getElementById("myInput").value = "";
+			} else {
+				console.log("输入的是数字");
+				// Check if the input value is between 2 and 9 (inclusive)
+				if (inputValue >= 2 && inputValue <= 9) {
+					console.log("输入的是2到9");
+				} else {
+					console.log("输入的不是2到9");
+					// Clear the input value
+					document.getElementById("myInput").value = "";
+				}
+			}
+		});
+	</script>
+</body>
+</html>
+
