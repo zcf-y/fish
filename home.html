@@ -1,54 +1,101 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>看到了吗</title>
+	<title>Image Gallery</title>
+	<style>
+		.image-gallery {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.page {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin: 20px;
+		}
+		img {
+			width: 200px;
+			height: 200px;
+			margin: 10px;
+			object-fit: cover;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-    <div id="slideshow-container">
-        <div class="mySlides fade">
-            <img src="img/k518.jpg" style="width:100%">
-        </div>
-    
-        <div class="mySlides fade">
-            <img src="img/k518.jpg" style="width:100%">
-        </div>
-    
-        <div class="mySlides fade">
-            <img src="img/k518.jpg" style="width:100%">
-        </div>
-    
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-    
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-    
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-    
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-                if (n < 1) {slideIndex = slides.length}
-                    for (i = 0; i < slides.length; i++) {
-                        slides[i].style.display = "none";
-                    }
-                    for (i = 0; i < dots.length; i++) {
-                        dots[i].className = dots[i].className.replace(" active", "");
-                    }
-                    slides[slideIndex-1].style.display = "block";
-                    dots[slideIndex-1].className += " active";
-                }
-    </script>
+	<div class="image-gallery">
+		<script>
+			var images = [ 'img/1.jpg',
+  'img/IMG_20230503_115532.jpg',
+  'img/IMG_20230503_120221.jpg',
+  'img/IMG_20230503_121201.jpg',
+  'img/IMG_20230503_121639.jpg',
+  'img/IMG_20230503_121640.jpg',
+  'img/IMG_20230503_122215.jpg',
+  'img/IMG_20230503_122448.jpg',
+  'img/IMG_20230503_122507.jpg',
+  'img/IMG_20230503_123729.jpg',
+  'img/IMG_20230503_123759.jpg',
+  'img/IMG_20230503_123915.jpg',
+  'img/IMG_20230503_124348.jpg',
+  'img/IMG_20230503_132011.jpg',
+  'img/IMG_20230503_132013.jpg',
+  'img/IMG_20230503_132016.jpg',
+  'img/IMG_20230503_132229.jpg',
+  'img/IMG_20230503_132232.jpg',
+  'img/IMG_20230503_132518.jpg',
+  'img/IMG_20230503_132840.jpg',
+  'img/IMG_20230503_132959.jpg',
+  'img/IMG_20230503_133031.jpg',
+  'img/IMG_20230503_134417.jpg',
+  'img/IMG_20230503_134432.jpg',
+  'img/IMG_20230503_134543.jpg',
+  'img/IMG_20230503_135450.jpg',
+  'img/IMG_20230503_135601.jpg',
+  'img/IMG_20230503_135635.jpg',
+  'img/IMG_20230503_135913.jpg',
+  'img/IMG_20230503_140004.jpg',
+  'img/IMG_20230503_140026.jpg',
+  'img/IMG_20230503_140107.jpg',
+  'img/IMG_20230503_140125.jpg',
+  'img/IMG_20230503_140248.jpg',
+  'img/IMG_20230503_140254.jpg',
+  'img/IMG_20230503_140311.jpg',
+  'img/IMG_20230503_140614.jpg',
+  'img/IMG_20230503_140632.jpg',
+  'img/IMG_20230503_140826.jpg',
+  'img/IMG_20230503_140835.jpg',
+  'img/IMG_20230503_141007.jpg',
+  'img/IMG_20230503_143935.jpg',
+  'img/IMG_20230503_144429.jpg',
+  'img/IMG_20230503_144441.jpg',
+  'img/IMG_20230503_144723.jpg',
+  'img/IMG_20230503_144908.jpg',
+  'img/IMG_20230503_145127.jpg'];
+			var page = document.createElement("div");
+			page.className = "page";
+
+			for (var i = 0; i < images.length; i++) {
+				var img = document.createElement("img");
+				img.src = images[i];
+				img.onerror = function() {
+					this.style.display = "none";
+				}
+				img.onclick = function() {
+					window.open(this.src);
+				}
+				page.appendChild(img);
+				if ((i + 1) % 3 == 0 || i == images.length - 1) {
+					document.querySelector(".image-gallery").appendChild(page);
+					page = document.createElement("div");
+					page.className = "page";
+				}
+			}
+
+		</script>
+	</div>
 </body>
-</html>
+</html> 
 
